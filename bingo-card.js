@@ -75,22 +75,34 @@ var rockNacional = [{"id": 53, "cancion": 'Gustavo Cordera - La bomba loca'},
 
 function initAll() {
   if (document.getElementById) {
-    document.getElementById("reload").onclick = anotherCard;
-    newCard();
+    for (var i=0; i<6; i++) {
+      anotherCard(i);
+      newCard(i);
+    }
   }
   else{
     alert("Your browser does not support this script.");
   }
 }
 
-function newCard() {
+function newCard(table) {
+  var numArray = [];
   for(var i=0 ; i<24 ; i++){
-    setSquare(i);
+    numArray.push(i);  
+  } 
+  var randomEmpty = shuffle(numArray).slice(0,11);
+  for (var i=0; i<randomEmpty.length; i++) {
+    document.getElementById("table" + table + "square"+randomEmpty[i]).className = "empty";
   }
+  
+  for(var j=0 ; j<24 ; j++){
+    setSquare(j, table);
+  }
+
 }
 
-function setSquare(thisSquare){
-  var currentSquare = "square" + thisSquare;
+function setSquare(thisSquare, table){
+  var currentSquare = "table" + table + "square" + thisSquare;
   var colPlace = new Array(0,0,1,1,2,2,3,3,0,0,1,1,2,2,3,3,0,0,1,1,2,2,3,3);
   var estiloIndex = colPlace[thisSquare];
 
@@ -128,11 +140,31 @@ function getNewSong(estiloIndex) {
   return estiloArray[randomIndex];  
 }
 
-function anotherCard() {
+function anotherCard(table) {
   for (var i = 1; i < usedSongs.length; i++) {
     usedSongs[i] = false;
   };
 
-  newCard();
-  return false;
+  for (var i=0; i<24; i++) {
+    document.getElementById("table" + table + "square" + i).className = "";
+  }
+}
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }
