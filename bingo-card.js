@@ -75,7 +75,7 @@ var rockNacional = [{"id": 53, "cancion": 'Gustavo Cordera - La bomba loca'},
 
 function initAll() {
   if (document.getElementById) {
-    for (var i=0; i<6; i++) {
+    for (var i=0; i<12; i++) {
       anotherCard(i);
       newCard(i);
     }
