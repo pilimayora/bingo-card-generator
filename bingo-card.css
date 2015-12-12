@@ -1,29 +1,27 @@
 body {
 	background-color: white;
 	color: black;
-	font-size: 20px;
-	font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-}
-
-h1, th {
-	font-family: Georgia, "Times New Roman", Times, serif;
-}
-
-h1 {
-	font-size: 28px;
+	font-size: 16px;
+	font-family: "Helvetica", Verdana, Arial, Helvetica, sans-serif;
 }
 
 table {
 	border-collapse: collapse;
+	margin: auto;
+	margin-bottom: 100px;
+	width: 960px;
 }
 
 th, td {
 	padding: 10px;
 	border: 2px #666 solid;
 	text-align: center;
-	font-size: 24px;
+	font-size: 14px;
 }
 
-#free {
-	background-color: #F66;
+tr {
+	height: 90px;
+}
+.empty {
+	background-color: #999999;
 }
